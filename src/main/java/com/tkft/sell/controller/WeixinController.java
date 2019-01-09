@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
  **/
 @RestController
 @RequestMapping("/weixin")
-public class WeixinController {
+public class  WeixinController {
 //    手动获取
     @GetMapping("/auth")
     public void auth(@RequestParam("code") String code){

@@ -29,6 +29,7 @@ public class WechatController {
     private WxMpService wxMpService;
 
     @GetMapping("/authorize")
+    //获得code 访问方式为 /authorize?returnUrl=http://www.imooc.com
     public String authorize(@RequestParam("returnUrl") String returnUrl){
         String url = "http://tkft.nat100.top/sell/wechat/userInfo";
         String result = wxMpService.oauth2buildAuthorizationUrl(url, WxConsts.OAuth2Scope.SNSAPI_BASE, URLEncoder.encode(returnUrl));
@@ -36,6 +37,7 @@ public class WechatController {
     }
 
     @GetMapping("/userInfo")
+    //用code获得token 中有微信openid
     public String userInfo(@RequestParam("code") String code,
                          @RequestParam("state") String returnUrl){
         WxMpOAuth2AccessToken wxMpOAuth2AccessToken = new WxMpOAuth2AccessToken();

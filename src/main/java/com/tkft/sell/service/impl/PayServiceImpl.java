@@ -6,6 +6,7 @@ import com.lly835.bestpay.model.PayResponse;
 import com.lly835.bestpay.service.impl.BestPayServiceImpl;
 import com.tkft.sell.dto.OrderDTO;
 import com.tkft.sell.service.PayService;
+import com.tkft.sell.utils.serializer.JsonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,5 +30,7 @@ public class PayServiceImpl implements PayService {
         payRequest.setOrderName(ORDER_NAME);
         payRequest.setPayTypeEnum(BestPayTypeEnum.WXPAY_H5);
         PayResponse payResponse = bestPayService.pay(payRequest);
+        System.out.print(JsonUtil.toJson(payResponse));
+
     }
 }
